@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AccountSidebar from '../components/AccountSidebar';
 
 
 const AccountProfile = () =>{
+  const [result, setResult] = useState("");
+    const [error, setError] = useState("");
+
+    useEffect (()=>{
+        fetch("https://dummyjson.com/users/1")
+  .then(response => response.json())
+  .then(response=>{
+    setResult(response)
+  })
+  .catch(error => console.log(error));
+
+    },[])
 	return(
 		<>
 			<Header/>
@@ -47,7 +59,7 @@ const AccountProfile = () =>{
                                                 </div>
                                             </div>
                                             <div>
-                                                Olawale Lawal
+                                                {result.firstName} {result.lastName}
                                             </div>
                                         </div>
                                         <div>
@@ -58,7 +70,7 @@ const AccountProfile = () =>{
                                                 </div>
                                             </div>
                                             <div>
-                                                username
+                                                {result.username}
                                             </div>
                                         </div>
                                         <div class="bg-eee">
@@ -69,7 +81,7 @@ const AccountProfile = () =>{
                                                 </div>
                                             </div>
                                             <div>
-                                               emailaddress@emaiw.ewfwe
+                                                {result.email}
                                             </div>
                                         </div>
                                         <div>
@@ -80,7 +92,7 @@ const AccountProfile = () =>{
                                                 </div>
                                             </div>
                                             <div>
-                                                080987676565
+                                                {result.phone}
                                             </div>
                                         </div>
                                     </div>
@@ -102,7 +114,7 @@ const AccountProfile = () =>{
                                                 </div>
                                             </div>
                                             <div>
-                                                Nigeria
+                                                {result.maidenName}
                                             </div>
                                         </div>
                                         <div>
@@ -113,7 +125,7 @@ const AccountProfile = () =>{
                                                 </div>
                                             </div>
                                             <div>
-                                                Male
+                                              {result.gender}
                                             </div>
                                         </div>
                                         <div class="bg-eee">
@@ -124,7 +136,7 @@ const AccountProfile = () =>{
                                                 </div>
                                             </div>
                                             <div>
-                                                Dec 25, 2021
+                                                {result.birthDate}
                                             </div>
                                         </div>
                                     </div>
@@ -142,13 +154,13 @@ const AccountProfile = () =>{
                                             Short Description:
                                         </div>
                                         <div class="mt-5">
-                                            Frontend Developer with expecience in UIUX & Graphcis Design
+                                           {result.company.title}
                                         </div>
                                         <div class="text-fade mt-25">
                                             Long Description :
                                         </div>
                                         <div class="mt-5 text-justify">
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                            {result.company.department}
                                         </div>
                                     </div>
                                 </div>
@@ -165,33 +177,33 @@ const AccountProfile = () =>{
                                             <div>
                                                 <span class="fa fa-book"></span>
                                                 <div class="overflow-hidden">
-                                                    English
+                                                    {result.firstName}
                                                 </div>
                                             </div>
                                             <div>
-                                                Fluent
+                                                {result.eyeColor}
                                             </div>
                                         </div>
                                         <div>
                                             <div>
                                                 <span class="fa fa-book"></span>
                                                 <div class="overflow-hidden">
-                                                    French
+                                                    {result.lastName}
                                                 </div>
                                             </div>
                                             <div>
-                                                Average
+                                                {result.eyeColor}
                                             </div>
                                         </div>
                                         <div class="bg-eee">
                                             <div>
                                                 <span class="fa fa-book"></span>
                                                 <div class="overflow-hidden">
-                                                    Spanish
+                                                    {result.maidenName}
                                                 </div>
                                             </div>
                                             <div>
-                                                Average
+                                                {result.eyeColor}
                                             </div>
                                         </div>
                                     </div>
@@ -204,29 +216,10 @@ const AccountProfile = () =>{
                                     <div class="p-15 pt-20 item-labels item-labels-md item-labels-tags-all">
                                         
                                         <div class="item-labels-tags">
-                                            Skills 1
+                                            {result.company.department}
                                         </div>
                                         
-                                        <div class="item-labels-tags">
-                                            Skills 1
-                                        </div>
-
-                                        <div class="item-labels-tags">
-                                            Skills 1
-                                        </div>
-
-                                        <div class="item-labels-tags">
-                                            Skills 1
-                                        </div>
-
-                                        <div class="item-labels-tags">
-                                            Skills 1
-                                        </div>
-
-                                        <div class="item-labels-tags">
-                                            Skills 1
-                                        </div>
-
+                                        
                                     </div>
                                 </div>
 
