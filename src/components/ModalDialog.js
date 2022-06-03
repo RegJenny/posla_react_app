@@ -1,73 +1,30 @@
-import React from 'react';
-
+import React, {useState, useEffect} from 'react';
 
 const ModalDialog = () => {
+
+	const [category, setCategory] = useState([]);
+	useEffect(()=>{
+		fetch("https://jsonplaceholder.typicode.com/users")
+			.then(res => res.json())
+			.then(res => {
+				setCategory(res);
+			})
+			.catch((e) => {
+				console.log(e);
+			})
+	});
+
+
+
+
+
 	return(
 		<>
-			<div class="modal" id="modalCategories">
-				<div class="modal-dialog">
-		            <div class="modal-content">
-		                <div class="modal-header">
-		                    <h4 class="modal-title">Project Categories</h4>
-		                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-		                </div>
-		                <div class="modal-body">
-		                    <div class="p-10">
-		                        
-		                        <div class="font-bold">
-		                            Select a category:
-		                        </div>
+		{category&&
+        category.map((item) => {
+          return <p key={item.id}>{item.title}</p>;
+        })}
 
-		                        <div class="home-category-list mt-5">
-
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            <a href="/category/business/projects">
-		                                <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
-		                                Category Name
-		                            </a>
-		                            
-		                        </div>
-
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
 		</>
 		)
 }

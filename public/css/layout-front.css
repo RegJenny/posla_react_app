@@ -776,9 +776,9 @@ body{
 #sidebar > div:first-child{
   height: 120px;
   background-color: #424875;
-  background-image: url('../images/sidebar.png');
+  background-image: url('/images/sidebar.png');
   background-size: 400%;
-  background-image: url('../images/sidebar2.png');*/
+  background-image: url('/images/sidebar2.png');*/
   background-repeat: no-repeat;
   background-size: 100%;
   /*background: #111;*/
@@ -801,7 +801,7 @@ body{
   height: 100%;
   position: absolute;
   z-index: 61;
-  background-image: url('../img/app/bgs/posla-admin.jpg');
+  background-image: url('/images/posla-admin.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

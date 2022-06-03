@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="row">
 
           <div className="col-lg-3 col-md-6 footer-info">
-            <img src="./images/logo-colored-orange.png" className="dp-contain" alt="Posla"/>
+            <img src="/images/logo-colored-orange.png" className="dp-contain" alt="Posla"/>
             <p className="mt-10">
               Posla.com is a reputable freelance platform aimed at: <br/>
               <ul className="list-style">

@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AccountSidebar from '../components/AccountSidebar';
 import ProjectList from '../components/ProjectList';
+import {Link} from 'react-router-dom';
+
 
 const FavoritesAccepted = () =>{
-	return(
-		<>
-			<Header/>
-	<div class="container">
+    const [result, setResult] = useState("");
+    const [error, setError] = useState("");
+
+    useEffect (()=>{
+        fetch("https://dummyjson.com/posts")
+  .then(response => response.json())
+  .then(response=>{
+    setResult(response)
+  })
+  .catch(error => console.log(error));
+
+    })
+    return(
+        <>
+            <Header/>
+    <div class="container" style={{marginTop:"20px"}}>
         <div class="row">
             <div class="d-none d-md-block col-md-4 col-lg-3">
 
@@ -49,42 +63,59 @@ const FavoritesAccepted = () =>{
                     
 
                         <div class="project-list project-list-mini mt-20 row">
+                            
+                        {result && result.posts.map((item)=>( 
+                                <div class="col-sm-6 col-md-12 col-lg-6 project-mgmt" style={{marginTop:"10px"}}>                     
+                                    <Link to="/project/c1d00230-a423-4b84-a121-7105239ff8d8" className="project" id="projectlist">
+                                        
+                                        <div>
+                                            <div>
+                                                <span className="fa fa-angle-right icon-50"></span>
+                                            </div>
+                                            <div className="">
+                                                <div className="font-bold">
+                                                    {item.title}
+                                                </div>
 
+                                                <div className="text-fade ellipsis-2-lines mt-5">
+                                                    {item.body} 
+                                                    </div>
+                                            </div>
+                                        </div>
 
-                            <div class="col-sm-6 col-md-12 col-lg-6 project-mgmt">
-                                <ProjectList/>
-                            </div>
+                                        <div className="mt-5 ellipsis">
+                                            <div className="project-price">
+                                                $150
+                                            </div>
+                                            <div className="item-labels">
+                                                <div className="item-labels-new">
+                                                    New
+                                                </div>
+                                                <div className="item-labels-featured">
+                                                    Featured
+                                                </div>
+                                                <div className="item-labels-proposals">
+                                                    18 proposals
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div className="item-labels item-labels-tags-all ellipsis">
+                                            <div className="item-labels-prefix">
+                                                Tags & Skills:
+                                            </div>
+                                            {item.tags.map((me)=>(
+                                            <div className="item-labels-tags">
+                                                {me}
+                                            </div>
+                                                ))}
+                                        </div>
 
-                            <div class="col-sm-6 col-md-12 col-lg-6 project-mgmt">
-                                <ProjectList/>
-                            </div>
-
-
-                            <div class="col-sm-6 col-md-12 col-lg-6 project-mgmt">
-                                <ProjectList/>
-                            </div>
-
-
-                            <div class="col-sm-6 col-md-12 col-lg-6 project-mgmt">
-                                <ProjectList/>
-                            </div>
-
-
-                            <div class="col-sm-6 col-md-12 col-lg-6 project-mgmt">
-                                <ProjectList/>
-                            </div>
-
-
-                            <div class="col-sm-6 col-md-12 col-lg-6 project-mgmt">
-                                <ProjectList/>
-                            </div>
-
-
+                                    </Link>
+                                </div>
+                            ))}
+                           
                         </div>
-
-                        
-
                     </div>
                 </div>
 
@@ -92,8 +123,8 @@ const FavoritesAccepted = () =>{
             </div>
         </div>
     </div>
-			<Footer/>
-		</>
-		)
+            <Footer/>
+        </>
+        )
 }
 export default FavoritesAccepted;

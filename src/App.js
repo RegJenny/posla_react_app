@@ -9,7 +9,7 @@ import DealPublish from './pages/DealPublish';
 import ProjectDetails from './pages/ProjectDetails';
 import Dashboard from './pages/Dashboard';
 import CatBusiness from './pages/CatBusiness';
-import DealsCat from './pages/DealsCat';
+import SearchDeals from './pages/SearchDeals';
 import Account from './pages/Account';
 import AccountProfile from './pages/AccountProfile';
 import AccountOrders from './pages/AccountOrders';
@@ -36,13 +36,61 @@ import ReviewsSent from './pages/ReviewsSent';
 import ReviewsRecieved from './pages/ReviewsRecieved';
 import Settings from './pages/Settings';
 import ProfileEdit from './pages/ProfileEdit';
-
+import AdminPage from './pages/AdminPage';
+import AdminLogin from './pages/AdminLogin';
+import AdminList from './pages/AdminList';
+import AdminForm from './pages/AdminForm';
+import AdminDetails from './pages/AdminDetails';
+import AdminListCat from './pages/AdminListCat';
+import EmailSample from './pages/EmailSample';
+import FrontErrors from './pages/FrontErrors';
+import TermsOfService from './pages/TermsOfService';
+import AboutUs from './pages/AboutUs';
+import SupportTicketsEach from './pages/SupportTicketsEach';
+import SupportTicketsNew from './pages/SupportTicketsNew';
+import SupportTicketsAll from './pages/SupportTicketsAll';
+import SupportTicketsIndex from './pages/SupportTicketsIndex';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import CheckoutStatus from './pages/CheckoutStatus';
+import AccountSettingsChangePassword from './pages/AccountSettingsChangePassword';
+import WithdrawalSettings from './pages/WithdrawalSettings';
+import VacationMode from './pages/VacationMode';
+import VacationModeSuccess from './pages/VacationModeSuccess';
+import ProjectEdit from './pages/ProjectEdit';
+import ProjectEditInfo from './pages/ProjectEditInfo';
+import ProjectPublish from './pages/ProjectPublish';
+import ProjectSuccess from './pages/ProjectSuccess';
+import ProjectCreate from './pages/ProjectCreate';
+import ProjectCreateInfo from './pages/ProjectCreateInfo';
+import ProjectCreatePublish from './pages/ProjectCreatePublish';
+import ProjectCreateSuccess from './pages/ProjectCreateSuccess';
+import ProjectDelete from './pages/ProjectDelete';
+import ProjectPause from './pages/ProjectPause';
+import ProjectListPaused from './pages/ProjectListPaused';
+import DealsEditRules from './pages/DealsEditRules';
+import DealsEditInfo from './pages/DealsEditInfo';
+import DealsEditPricing from './pages/DealsEditPricing';
+import DealsEditSuccess from './pages/DealsEditSuccess';
+import DealsPaused from './pages/DealsPaused';
+import DealsPause from './pages/DealsPause';
+import DealsDelete from './pages/DealsDelete';
+import Resolution from './pages/Resolution';
+import ResEachBuyer from './pages/ResEachBuyer';
+import ResEachSeller from './pages/ResEachSeller';
+import OrderDetails from './pages/OrderDetails';
+import OrderReview from './pages/OrderReview';
+import OrderRequirement from './pages/OrderRequirement';
+import OrderDeliver from './pages/OrderDeliver';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage/>}/>
+        <Route path="/admin" element={<AdminPage/>}/>
         <Route path="/account/deals/create" element={<DealsPage/>}/>
         <Route path="/account/deals/create/1234/info" element={<DealInfo/>}/>
         <Route path="/account/deals/create/1234/pricing" element={<DealPricing/>}/>
@@ -51,7 +99,7 @@ function App() {
         <Route path="/project/c1d00230-a423-4b84-a121-7105239ff8d8" element={<ProjectDetails/>}/>
         <Route path="/account/dashboard" element={<Dashboard/>}/>
         <Route path="/category/business/projects" element={<CatBusiness/>}/>
-        <Route path="/deals" element={<DealsCat/>}/>
+        <Route path="/deals" element={<SearchDeals/>}/>
         <Route path="/account" element={<Account/>}/>
         <Route path="/account/profile" element={<AccountProfile/>}/>
         <Route path="/account/orders" element={<AccountOrders/>}/>
@@ -78,6 +126,128 @@ function App() {
         <Route path="/account/reviews/received" element={<ReviewsRecieved/>}/>
         <Route path="/account/settings" element={<Settings/>}/>
         <Route path="/account/profile/edit" element={<ProfileEdit/>}/>
+        <Route path="/admin/login" element={<AdminLogin/>}/>
+        <Route path="/admin/sample/list" element={<AdminList/>}/>
+        <Route path="/admin/sample/form" element={<AdminForm/>}/>
+        <Route path="/admin/sample/details" element={<AdminDetails/>}/>
+        <Route path="/admin/list/category" element={<AdminListCat/>}/>
+        <Route path="/email/sample" element={<EmailSample/>}/>
+        <Route path="/404" element={<FrontErrors/>}/>
+        <Route path="/terms" element={<TermsOfService/>}/>
+        <Route path="/about" element={<AboutUs/>}/>
+        <Route path="/support/tickets/123456789012" element={<SupportTicketsEach/>}/>
+        <Route path="/support/tickets/new" element={<SupportTicketsNew/>}/>
+        <Route path="/support/tickets" element={<SupportTicketsAll/>}/>
+        <Route path="/support/" element={<SupportTicketsIndex/>}/>
+        <Route path="/cart/" element={<Cart/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/checkout/status" element={<CheckoutStatus/>}/>
+        <Route path="/account/settings/change-password" element={<AccountSettingsChangePassword/>}/>
+        <Route path="/account/settings/withdrawal-settings" element={<WithdrawalSettings/>}/>
+        <Route path="/account/settings/vacation-mode" element={<VacationMode/>}/>
+        <Route path="/account/settings/vacation-mode-success" element={<VacationModeSuccess/>}/>
+        <Route path="/account/projects/edit/1234" element={<ProjectEdit/>}/>
+        <Route path="/account/projects/edit/1234/rules" element={<ProjectEdit/>}/>
+        <Route path="/account/projects/edit/1234/info" element={<ProjectEditInfo/>}/>
+        <Route path="/account/projects/edit/1234/publish" element={<ProjectPublish/>}/>
+        <Route path="/account/projects/edit/1234/success" element={<ProjectSuccess/>}/>
+        <Route path="/account/projects/create" element={<ProjectCreate/>}/>
+        <Route path="/account/projects/create/1234/info" element={<ProjectCreateInfo/>}/>
+        <Route path="/account/projects/create/1234/publish" element={<ProjectCreatePublish/>}/>
+        <Route path="/account/projects/create/1234/success" element={<ProjectCreateSuccess/>}/>
+        <Route path="/account/projects/delete/1234" element={<ProjectDelete/>}/>
+        <Route path="/account/projects/pause/1234" element={<ProjectPause/>}/>
+        <Route path="/account/projects/paused" element={<ProjectListPaused/>}/>
+        <Route path="/account/deals/edit/1234" element={<DealsEditRules/>}/>
+        <Route path="/account/deals/edit/1234/rules" element={<DealsEditRules/>}/>
+        <Route path="/account/deals/edit/1234/info" element={<DealsEditInfo/>}/>
+        <Route path="/account/deals/edit/1234/pricing" element={<DealsEditPricing/>}/>
+        <Route path="/account/deals/edit/1234/success" element={<DealsEditSuccess/>}/>
+        <Route path="/account/deals/paused" element={<DealsPaused/>}/>
+        <Route path="/account/deals/pause/1234" element={<DealsPause/>}/>
+        <Route path="/account/deals/delete/1234" element={<DealsDelete/>}/>
+        <Route path="/account/resolution/orders" element={<Resolution/>}/>
+        <Route path="/account/resolution/orders/123456789012" element={<ResEachBuyer/>}/>
+        <Route path="/account/resolution/orders/123456789013" element={<ResEachSeller/>}/>
+        <Route path="/account/orders/123456789012" element={<OrderDetails/>}/>
+        <Route path="/account/orders/review/123456789012" element={<OrderReview/>}/>
+        <Route path="/account/orders/requirements/123456789012" element={<OrderRequirement/>}/>
+        <Route path="/account/orders/deliver/123456789012" element={<OrderDeliver/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
+
+        
+
+        
+        
+        
+
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+        
+
+        
+
+
+        
+        
+        
+
+
+        
+
+        
+
+
+        
+
+
+
+        
+
+
+
+        
+
+
+        
+
+        
+
+        
+
+
+        
+
+        
+
+        
+
+
+        
+
+
+        
+
+
+
+
+
+
 
 
 

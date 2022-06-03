@@ -110,11 +110,13 @@ const CommonFilter = () => {
 
                         <div class="posla-price-slider p-10 pt-20 pb-20">
                             <div class="posla-price-slider-slide">
-                                <div id="slider-range" class="price-filter-range posla-slider-range" name="rangeInput"></div>
+                                <div id="slider-range" class="price-filter-range posla-slider-range" name="rangeInput">
+                                    price range
+                                </div>
                             </div>
                             <div class="posla-price-slider-input">
-                                <input type="number" min="0" max="9900" oninput="validity.valid||(value='0');" id="min_price" class="posla-slider-min-input price-range-field" />
-                                <input type="number" min="0" max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="posla-slider-max-input price-range-field" />
+                                <input type="number" min="0" max="9900"  id="min_price" class="posla-slider-min-input price-range-field" />
+                                <input type="number" min="0" max="10000" id="max_price" class="posla-slider-max-input price-range-field" />
                             </div>
                             <button class="price-range-search" id="price-range-submit">Search</button> 
                             <div id="searchResults" class="search-results-block"></div>
@@ -129,23 +131,23 @@ const CommonFilter = () => {
                     </div>
                     <div class="filter-body pt-10 pb-10">
                         <label class="checkbox-inline mb-5">
-                            <input type="checkbox" name="" id=""/>
+                            <input type="checkbox" name="check" id=""/>
                             No Proposals Yet
                         </label>
                         <label class="checkbox-inline mb-5">
-                            <input type="checkbox" name="" id=""/>
+                            <input type="checkbox" name="check" id=""/>
                             1-5 Proposals
                         </label>
                         <label class="checkbox-inline mb-5">
-                            <input type="checkbox" name="" id=""/>
+                            <input type="checkbox" name="check" id=""/>
                             6-10 Proposals
                         </label>
                         <label class="checkbox-inline mb-5">
-                            <input type="checkbox" name="" id=""/>
+                            <input type="checkbox" name="check" id=""/>
                             10-20 Proposals
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="" id=""/>
+                            <input type="checkbox" name="check" id=""/>
                             20 & Above Proposals
                         </label>
                     </div>

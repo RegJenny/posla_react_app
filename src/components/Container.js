@@ -1,6 +1,37 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ProjectList from './ProjectList';
+import {Link} from 'react-router-dom';
+
 const Container = () =>{
+	const [category, setCategory] = useState([]);
+	
+	useEffect(()=>{
+		fetch("https://jsonplaceholder.typicode.com/users")
+			.then(res => res.json())
+			.then(res => {
+				setCategory(res);
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+	});
+	
+	{
+		/**
+	useEffect(()=>{
+	fetch("https://posla-api.herokuapp.com/api/front/projects")
+		.then(res => res.json())
+		.then(res => {
+			setCategory(res);
+		})
+		.catch((error) => {
+			console.log(error);
+		})
+	});
+	**/
+	}
+
+
 	return(
 		<>
 	<div class="container">
@@ -11,47 +42,12 @@ const Container = () =>{
                 <div class="sticky-top">
                     <div class="home-category-list">
 
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
+        			{category.map((item)=>{ return(
+                    	<a href="/category/business/projects">
+                            <span class="fa fa-angle-right icon-000 icon-18 pull-right d-inline"></span>
+                            {item.name}
                         </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        <a href="/category/business/projects">
-                            Category Name
-                            <span class="fa fa-angle-right"></span>
-                        </a>
-                        
+                    		)})}       
                     </div>
                     
                     <div class="mt-10">
@@ -80,157 +76,111 @@ const Container = () =>{
 					                Featured Projects
 					            </div>
 					            <div class="project-list project-list-wide">
-									<ProjectList/>
+								<Link to="/project/c1d00230-a423-4b84-a121-7105239ff8d8" className="project" id="projectlist">
+							            <div>
+							                <div>
+							                    <span className="fa fa-angle-right icon-50"></span>
+							                </div>
+							                <div className="">
+							                    <div className="font-bold">
+							                   		njrnfjnrjfn
+							                    </div>
+
+							                    <div className="text-fade ellipsis-2-lines mt-5">
+							                        nvnkfvkf
+							                    </div>
+							                </div>
+							            </div>
+
+							        <div className="mt-5 ellipsis">
+							            <div className="project-price">
+							                $150
+							            </div>
+							            <div className="item-labels">
+							                <div className="item-labels-new">
+							                    New
+							                </div>
+							                <div className="item-labels-featured">
+							                    Featured
+							                </div>
+							                <div className="item-labels-proposals">
+							                    18 proposals
+							                </div>
+							            </div>
+							        </div>
+
+							        <div className="item-labels item-labels-tags-all ellipsis">
+							            <div className="item-labels-prefix">
+							                Tags & Skills:
+							            </div>
+							            <div className="item-labels-tags">
+							                Tag name
+							            </div>
+
+							        </div>
+							        </Link>
 					            </div>
 					        </div>
-				         	<div class="section">
+					        {category.map((item)=>(
+
+					        <div class="section">
 				                <div class="section-title">
-				                    Category 2
+				                    {item.name}
 				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
 				                </div>
 				                <div class="project-list project-list-wide">
-									<ProjectList/>
+									<Link to="/project/c1d00230-a423-4b84-a121-7105239ff8d8" className="project" id="projectlist">
+							            <div>
+							                <div>
+							                    <span className="fa fa-angle-right icon-50"></span>
+							                </div>
+							                <div className="">
+							                    <div className="font-bold">
+							                       {item.name}
+							                    </div>
+
+							                    <div className="text-fade ellipsis-2-lines mt-5">
+							                        {item.email}
+							                    </div>
+							                </div>
+							            </div>
+
+							        <div className="mt-5 ellipsis">
+							            <div className="project-price">
+							                $150
+							            </div>
+							            <div className="item-labels">
+							                <div className="item-labels-new">
+							                    New
+							                </div>
+							                <div className="item-labels-featured">
+							                    Featured
+							                </div>
+							                <div className="item-labels-proposals">
+							                    18 proposals
+							                </div>
+							            </div>
+							        </div>
+
+							        <div className="item-labels item-labels-tags-all ellipsis">
+							            <div className="item-labels-prefix">
+							                Tags & Skills:
+							            </div>
+							            <div className="item-labels-tags">
+							                {item.username}
+							            </div>
+							        </div>
+							        </Link>
 				                </div>
 				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-
-				             <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
+				                    View All {item.name} Projects
 				                    <span class="fa fa-angle-right"></span>
 				                </a>
 				            </div>
 
 
 
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
-
-
-				            <div class="section">
-				                <div class="section-title">
-				                    Category 2
-				                    <a href="/category/business/projects" class="btn btn-transparent-black btn-xs pull-right hover-bg-orange">View All</a>
-				                </div>
-				                <div class="project-list project-list-wide">
-									<ProjectList/>
-				                </div>
-				                <a href="/category/business/projects" class="d-block text-center pt-10 pb-10 b-1-ddd bg-eee hover-bg-orange">
-				                    View All Category 2 Projects
-				                    <span class="fa fa-angle-right"></span>
-				                </a>
-				            </div>
+					        	))}
 				    </div>
 				</div>
 				</div>
@@ -265,7 +215,52 @@ const Container = () =>{
 		                        Latest Projects
 		                    </div>
 		                    <div class="project-list project-list-mini">
-		                    	<ProjectList/>
+		           
+
+		                    <Link to="/project/c1d00230-a423-4b84-a121-7105239ff8d8" className="project" id="projectlist">
+					            <div>
+					                <div>
+					                    <span className="fa fa-angle-right icon-50"></span>
+					                </div>
+					                <div className="">
+					                    <div className="font-bold">
+					                       jjj
+					                    </div>
+
+					                    <div className="text-fade ellipsis-2-lines mt-5">
+					                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+					                    </div>
+					                </div>
+					            </div>
+
+
+					        <div className="mt-5 ellipsis">
+					            <div className="project-price">
+					                $150
+					            </div>
+					            <div className="item-labels">
+					                <div className="item-labels-new">
+					                    New
+					                </div>
+					                <div className="item-labels-featured">
+					                    Featured
+					                </div>
+					                <div className="item-labels-proposals">
+					                    18 proposals
+					                </div>
+					            </div>
+					        </div>
+
+					        <div className="item-labels item-labels-tags-all ellipsis">
+					            <div className="item-labels-prefix">
+					                Tags & Skills:
+					            </div>
+					            <div className="item-labels-tags">
+					                Tag name
+					            </div>
+					        </div>
+					        </Link>
+
 		                    </div>
 		                </div>
 

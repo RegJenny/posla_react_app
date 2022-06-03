@@ -1,13 +1,15 @@
 import React from 'react';
 
 const AccountSidebar = () => {
+    const rating = 4.5;
+   
 	return(
-<div class="section mb-0 account-sidebar" Style={{'border-bottom-left-radius': '0', 'border-bottom-right-radius': '0'}}> 
+<div class="section mb-0 account-sidebar" Style={{borderBottomLeftRadius: '0', borderBottomRightRadius: '0', marginTop:"20px"}}> 
     <div class="section mb-0 account-sidebar">
 
     <div class="account-sidebar-info text-center">
         <div>
-            <img src="img/app/samples/user.png"alt="User name" class="dp-cover" />
+            <img src="/images/user.png"alt="User name" class="dp-cover" />
         </div>
         <div class="font-bold">
             Olawale Lawal
@@ -17,13 +19,16 @@ const AccountSidebar = () => {
         </div>
         <div>
             <div class="rating-box mt-5">
-                <div>
-                    <div></div>
-                    <div Style={{'width': '75%'}}>put ratings here</div> 
+                <div style={{background:"white"}}>
+                    <i class="fa fa-star fa-1x" style={{color:"blue"}}></i>
+                    <i class="fa fa-star fa-1x" style={{color:"blue"}}></i>
+                    <i class="fa fa-star fa-1x" style={{color:"blue"}}></i>
+                    <i class="fa fa-star fa-1x" style={{color:"blue"}}></i>
+                    <i class="fa fa-star-o fa-1x" style={{color:"blue"}}></i>
                 </div>
                 <div>
                     <span class="font-bold text-orange">
-                        5.0
+                        {rating}
                     </span>
                     <span class="text-fade">
                         (1809 reviews)

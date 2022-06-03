@@ -7,17 +7,17 @@ const Deal = () =>{
 		    
 		    <div class="deal-info-top">
 		        <div>
-		            <img src='img/app/samples/deal-1.png' alt="Olawale Lawal" class="dp-cover" />
+		            <img src='/images/deal-1.png' alt="Olawale Lawal" class="dp-cover" />
 		        </div>
 		        <div class="">
 		            <div>
-		                <img src='img/app/samples/user.png' alt="Olawale Lawal" class="dp-contain" />
+		                <img src='/images/user.png' alt="Olawale Lawal" class="dp-contain" />
 		            </div>
 		            <div class="text-fade font-13 ellipsis">
 		                Olawale Lawal
 		            </div>
 		        </div>
-		        <div class="font-bold ellipsis-2-lines mt-5 pr-10 pl-10" Style={{"min-height": "38px"}}>
+		        <div class="font-bold ellipsis-2-lines mt-5 pr-10 pl-10" style={{minHeight: "38px"}}>
 		            I can abc build a beautiful bespoke logo for your company using the style and color combination you prefer.
 		        </div>
 		    </div>
@@ -37,7 +37,7 @@ const Deal = () =>{
 		        </div>
 		    </div>
 
-		    <div class="pt-5 bt-1-ddd" Style={{"margin-top": "-3px"}}>
+		    <div class="pt-5 bt-1-ddd" style={{marginTop: "-3px"}}>
 		        <div class="mt-0 pl-10 item-labels item-labels-tags-all ellipsis">
 		            <div class="item-labels-prefix">
 		                Tags & Skills:

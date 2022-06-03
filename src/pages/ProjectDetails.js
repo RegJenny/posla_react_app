@@ -1,15 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ShareModal from '../components/ShareModal';
-import ProjectList from '../components/ProjectList'
+import ProjectList from '../components/ProjectList';
+import {Link} from 'react-router-dom';
 
 const ProjectDetails = () => {
+
+    const [project, setProject] = useState([]);
+    useEffect(()=>{
+    fetch("https://jsonplaceholder.typicode.com/users")
+        .then(res => res.json())
+        .then(res => {
+            setProject(res);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    });
+
+
 	return(
 		<>
 		<Header/>
 		<ShareModal/>
-		<div class="container">
+		<div class="container" style={{marginTop: "20px"}}>
 	        
 	        <div class="section d-none d-sm-block p-5">
 	            <div class="row">
@@ -86,7 +101,7 @@ const ProjectDetails = () => {
                         <div class="pull-left">
                             <a href="/user/abcde12345" class="user-img-text">
                                 <div>
-                                    <img src="img/app/samples/user.png" alt="Firstname lastname" class="dp-contain" />
+                                    <img src="/images/user.png" alt="Firstname lastname" class="dp-contain" />
                                 </div>
                                 <div class="hover-underline">
                                     Olawale Lawal
@@ -286,7 +301,7 @@ const ProjectDetails = () => {
                     <div>
                         <a href="/user/abcde12345" class="user-img-text user-img-text-md">
                             <div>
-                                <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                             </div>
                             <div class="pt-5 underline-none">
                                 Firstname lastname
@@ -388,180 +403,10 @@ const ProjectDetails = () => {
                         </ul>
 
 
-                        <form class="modal" id="view_proposal_1">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">John Clifford's Proposal</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="p-10">
-                                            
-                                            <div class="">
-                                                <div class="text-fade">
-                                                    Proposal:
-                                                </div>
-                                                <div>
-                                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                                                </div>
-                                                if attachment exists 
-                                                <div class="floated-content mt-10">
-                                                    <a href="" class="media">
-                                                        <div class="text-center">
-                                                            if it's an image, display it directly 
-                                                            <img src='img/app/samples/boxes.jpg' alt="" class="dp-contain" />
-                                                        </div>
-                                                        <div>
-                                                            <div class="pull-right ml-5">
-                                                                <span class="text-fade text-small">(33kb)</span>
-                                                            </div>
-                                                            <div class="overflow-hidden ellipsis">
-                                                                <span class="fa fa-arrow-alt-circle-down icon-blue"></span>
-                                                                <span class="">12412412412.jpg</span>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="" class="media">
-                                                        <div class="text-center">
-                                                           if it's an image, display it directly 
-                                                            <img src="{{asset('img/app/samples/boxes.jpg')}}" alt="" class="dp-contain" />
-                                                        </div>
-                                                        <div>
-                                                            <div class="pull-right ml-5">
-                                                                <span class="text-fade text-small">(33kb)</span>
-                                                            </div>
-                                                            <div class="overflow-hidden ellipsis">
-                                                                <span class="fa fa-arrow-alt-circle-down icon-blue"></span>
-                                                                <span class="">12412412412.jpg</span>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                endif attachment exists 
-                                            </div>
 
-                                            <div class="mt-20">
-                                                <div class="text-fade">
-                                                    Proposed Budget (Total):
-                                                </div>
-                                                <div>
-                                                    $500
-                                                </div>
-                                            </div>
-
-                                            <div class="mt-20">
-                                                <div class="text-fade">
-                                                    Minimum Deposit:
-                                                </div>
-                                                <div>
-                                                    $100
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="close btn btn-transparent-black btn-sm icon-left" data-dismiss="modal">
-                                            <span class="fa fa-times"></span>
-                                            Close
-                                        </button>
-                                        <button type="submit" class="btn btn-blue btn-sm add-question-btn icon-left">
-                                            <span class="fa fa-plus"></span>
-                                            Shortlist Proposal
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
 
                           
-                        <form action="/cart" class="modal" id="view_proposal_2">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">John Clifford's Proposal</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="p-10">
-                                            
-                                            <div class="">
-                                                <div class="text-fade">
-                                                    Proposal:
-                                                </div>
-                                                <div>
-                                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                                                </div>
-                                                if attachment exists 
-                                                <div class="floated-content mt-10">
-                                                    <a href="" class="media">
-                                                        <div class="text-center">
-                                                            if it's an image, display it directly 
-                                                            <img src='img/app/samples/boxes.jpg' alt="" class="dp-contain" />
-                                                        </div>
-                                                        <div>
-                                                            <div class="pull-right ml-5">
-                                                                <span class="text-fade text-small">(33kb)</span>
-                                                            </div>
-                                                            <div class="overflow-hidden ellipsis">
-                                                                <span class="fa fa-arrow-alt-circle-down icon-blue"></span>
-                                                                <span class="">12412412412.jpg</span>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="" class="media">
-                                                        <div class="text-center">
-                                                            if it's an image, display it directly
-                                                            <img src='img/app/samples/boxes.jpg' alt="" class="dp-contain" />
-                                                        </div>
-                                                        <div>
-                                                            <div class="pull-right ml-5">
-                                                                <span class="text-fade text-small">(33kb)</span>
-                                                            </div>
-                                                            <div class="overflow-hidden ellipsis">
-                                                                <span class="fa fa-arrow-alt-circle-down icon-blue"></span>
-                                                                <span class="">12412412412.jpg</span>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                endif attachment exists 
-                                            </div>
-
-                                            <div class="mt-20">
-                                                <div class="text-fade">
-                                                    Proposed Budget (Total):
-                                                </div>
-                                                <div>
-                                                    $500
-                                                </div>
-                                            </div>
-
-                                            <div class="mt-20">
-                                                <div class="text-fade">
-                                                    Minimum Deposit:
-                                                </div>
-                                                <div>
-                                                    $100
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="close btn btn-transparent-black btn-sm icon-left" data-dismiss="modal">
-                                            <span class="fa fa-times"></span>
-                                            Close
-                                        </button>
-                                        <button type="submit" class="btn btn-orange btn-sm add-question-btn icon-left">
-                                            <span class="fas fa-cart-plus"></span>
-                                            Assign Project
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        
 
                           
                         <div class="tab-content">
@@ -570,305 +415,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
-                                        </a>
-                                        <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
-                                            <div>
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style="width: 75%;"></div>  put product rating here (in percentage) 
-                                                    </div>
-                                                    <div>
-                                                         <span class="fa fa-star"></span>
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-fade">
-                                                12 projects received
-                                            </div>
-                                            <div class="text-fade">
-                                                9 projects completed
-                                            </div>
-                                        </div>
-                                        <div class="overflow-hidden">
-                                            <a href="" class="font-bold hover-underline">
-                                                John Clifford
-                                            </a>
-                                            <div class="text-fade">
-                                                <span class="fa fa-flag text-fade"></span>
-                                                Nigeria
-                                                &nbsp; | &nbsp;
-                                                <span class="fa fa-clock text-fade"></span>
-                                                2 hours ago
-                                            </div>
-                                            <div class="text-fade">
-                                                Swift, Objective C, Python, Machine Learning, AI
-                                            </div>
-                                            <div class="d-block d-sm-none d-md-block d-lg-none">
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style="width: 75%;"></div> put product rating here (in percentage) 
-                                                    </div>
-                                                    <div>
-                                                        <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <button type="button" class="btn btn-blue btn-xs" data-toggle="modal" data-target="#view_proposal_1">View Proposal</button>
-                                                <button type="submit" class="btn btn-orange btn-xs">Shortlist</button>
-                                                <button type="submit" class="btn btn-transparent-black hover-bg-red btn-xs">Reject</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form action="">
-                                    <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
-                                        <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
-                                        </a>
-                                        <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
-                                            <div>
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style="width: 75%;"></div> put product rating here (in percentage)
-                                                    </div>
-                                                    <div>
-                                                        <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-fade">
-                                                12 projects received
-                                            </div>
-                                            <div class="text-fade">
-                                                9 projects completed
-                                            </div>
-                                        </div>
-                                        <div class="overflow-hidden">
-                                            <a href="" class="font-bold hover-underline">
-                                                John Clifford
-                                            </a>
-                                            <div class="text-fade">
-                                                <span class="fa fa-flag text-fade"></span>
-                                                Nigeria
-                                                &nbsp; | &nbsp;
-                                                <span class="fa fa-clock text-fade"></span>
-                                                2 hours ago
-                                            </div>
-                                            <div class="text-fade">
-                                                Swift, Objective C, Python, Machine Learning, AI
-                                            </div>
-                                            <div class="d-block d-sm-none d-md-block d-lg-none">
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div> put product rating here (in percentage) 
-                                                    </div>
-                                                    <div>
-                                                         <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <button type="button" class="btn btn-blue btn-xs" data-toggle="modal" data-target="#view_proposal_1">View Proposal</button>
-                                                <button type="submit" class="btn btn-transparent-black btn-xs hover-bg-red" title="Remove shortlist" data-widget="collapse" data-toggle="tooltip">Shortlisted</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form action="">
-                                    <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
-                                        <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
-                                        </a>
-                                        <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
-                                            <div>
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div>  put product rating here (in percentage)
-                                                    </div>
-                                                    <div>
-                                                         <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-fade">
-                                                12 projects received
-                                            </div>
-                                            <div class="text-fade">
-                                                9 projects completed
-                                            </div>
-                                        </div>
-                                        <div class="overflow-hidden">
-                                            <a href="" class="font-bold hover-underline">
-                                                John Clifford
-                                            </a>
-                                            <div class="text-fade">
-                                                <span class="fa fa-flag text-fade"></span>
-                                                Nigeria
-                                                &nbsp; | &nbsp;
-                                                <span class="fa fa-clock text-fade"></span>
-                                                2 hours ago
-                                            </div>
-                                            <div class="text-fade">
-                                                Swift, Objective C, Python, Machine Learning, AI
-                                            </div>
-                                            <div class="d-block d-sm-none d-md-block d-lg-none">
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div>  put product rating here (in percentage)
-                                                    </div>
-                                                    <div>
-                                                         <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <button type="button" class="btn btn-blue btn-xs" data-toggle="modal" data-target="#view_proposal_1">View Proposal</button>
-                                                <button type="submit" class="btn btn-transparent-black btn-xs hover-bg-red" title="Remove shortlist" data-widget="collapse" data-toggle="tooltip">Shortlisted</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form action="">
-                                    <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
-                                        <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
-                                        </a>
-                                        <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
-                                            <div>
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div> put product rating here (in percentage)
-                                                    </div>
-                                                    <div>
-                                                         <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-fade">
-                                                12 projects received
-                                            </div>
-                                            <div class="text-fade">
-                                                9 projects completed
-                                            </div>
-                                        </div>
-                                        <div class="overflow-hidden">
-                                            <a href="" class="font-bold hover-underline">
-                                                John Clifford
-                                            </a>
-                                            <div class="text-fade">
-                                                <span class="fa fa-flag text-fade"></span>
-                                                Nigeria
-                                                &nbsp; | &nbsp;
-                                                <span class="fa fa-clock text-fade"></span>
-                                                2 hours ago
-                                            </div>
-                                            <div class="text-fade">
-                                                Swift, Objective C, Python, Machine Learning, AI
-                                            </div>
-                                            <div class="d-block d-sm-none d-md-block d-lg-none">
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div>  put product rating here (in percentage) 
-                                                    </div>
-                                                    <div>
-                                                         <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <button type="button" class="btn btn-blue btn-xs" data-toggle="modal" data-target="#view_proposal_1">View Proposal</button>
-                                                <button type="submit" class="btn btn-orange btn-xs">Shortlist</button>
-                                                <button type="submit" class="btn btn-transparent-black hover-bg-red btn-xs">Reject</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form action="">
-                                    <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
-                                        <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
-                                        </a>
-                                        <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
-                                            <div>
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style="width: 75%;"></div> put product rating here (in percentage) 
-                                                    </div>
-                                                    <div>
-                                                       <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-fade">
-                                                12 projects received
-                                            </div>
-                                            <div class="text-fade">
-                                                9 projects completed
-                                            </div>
-                                        </div>
-                                        <div class="overflow-hidden">
-                                            <a href="" class="font-bold hover-underline">
-                                                John Clifford
-                                            </a>
-                                            <div class="text-fade">
-                                                <span class="fa fa-flag text-fade"></span>
-                                                Nigeria
-                                                &nbsp; | &nbsp;
-                                                <span class="fa fa-clock text-fade"></span>
-                                                2 hours ago
-                                            </div>
-                                            <div class="text-fade">
-                                                Swift, Objective C, Python, Machine Learning, AI
-                                            </div>
-                                            <div class="d-block d-sm-none d-md-block d-lg-none">
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div>  put product rating here (in percentage)
-                                                    </div>
-                                                    <div>
-                                                        <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <button type="button" class="btn btn-blue btn-xs" data-toggle="modal" data-target="#view_proposal_1">View Proposal</button>
-                                                <button type="submit" class="btn btn-orange btn-xs">Shortlist</button>
-                                                <button type="submit" class="btn btn-transparent-black hover-bg-red btn-xs">Reject</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form action="">
-                                    <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
-                                        <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -927,7 +474,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -971,66 +518,6 @@ const ProjectDetails = () => {
                                                     </div>
                                                     <div>
                                                         <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <button type="button" class="btn btn-blue btn-xs" data-toggle="modal" data-target="#view_proposal_1">View Proposal</button>
-                                                <button type="submit" class="btn btn-orange btn-xs">Shortlist</button>
-                                                <button type="submit" class="btn btn-transparent-black hover-bg-red btn-xs">Reject</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form action="">
-                                    <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
-                                        <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
-                                        </a>
-                                        <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
-                                            <div>
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div>  put product rating here (in percentage)
-                                                    </div>
-                                                    <div>
-                                                        <span class="fa fa-star"></span> 
-                                                        3.75
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-fade">
-                                                12 projects received
-                                            </div>
-                                            <div class="text-fade">
-                                                9 projects completed
-                                            </div>
-                                        </div>
-                                        <div class="overflow-hidden">
-                                            <a href="" class="font-bold hover-underline">
-                                                John Clifford
-                                            </a>
-                                            <div class="text-fade">
-                                                <span class="fa fa-flag text-fade"></span>
-                                                Nigeria
-                                                &nbsp; | &nbsp;
-                                                <span class="fa fa-clock text-fade"></span>
-                                                2 hours ago
-                                            </div>
-                                            <div class="text-fade">
-                                                Swift, Objective C, Python, Machine Learning, AI
-                                            </div>
-                                            <div class="d-block d-sm-none d-md-block d-lg-none">
-                                                <div class="rating-box">
-                                                    <div>
-                                                        <div></div>
-                                                        <div Style={{"width": "75%"}}></div>  put product rating here (in percentage)
-                                                    </div>
-                                                    <div>
-                                                         <span class="fa fa-star"></span> 
                                                         3.75
                                                     </div>
                                                 </div>
@@ -1051,7 +538,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1111,7 +598,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1171,7 +658,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1235,7 +722,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1295,7 +782,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1355,7 +842,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1419,7 +906,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1479,7 +966,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1539,7 +1026,7 @@ const ProjectDetails = () => {
                                 <form action="">
                                     <div class="user-img-text user-img-text-md bb-1-ddd proposal-list-each">
                                         <a href="" class="pull-left">
-                                            <img src='img/app/samples/user.png' alt="Firstname lastname" class="dp-contain" />
+                                            <img src='/images/user.png' alt="Firstname lastname" class="dp-contain" />
                                         </a>
                                         <div class="pull-right d-none d-sm-block d-md-none d-lg-block ml-15">
                                             <div>
@@ -1951,10 +1438,71 @@ const ProjectDetails = () => {
         </div>
         <div class="section">
             <div class="project-list project-list-mini row">
-               
+               {project.map((item)=>(
                     <div class="col-lg-6">
-                        <ProjectList/>
+                        <Link to="/project/c1d00230-a423-4b84-a121-7105239ff8d8" className="project" id="projectlist">
+                                <div>
+                                    <div>
+                                        <span className="fa fa-angle-right icon-50"></span>
+                                    </div>
+                                    <div className="">
+                                        <div className="font-bold">
+                                          jbvjjbvj {project.name}
+                                        </div>
+
+                                        <div className="text-fade ellipsis-2-lines mt-5">
+                                            menknvjnj
+                                        </div>
+                                    </div>
+                                </div>
+                            <div className="mt-5 ellipsis">
+                                <div className="project-price">
+                                    $150
+                                </div>
+                                <div className="item-labels">
+                                    <div className="item-labels-new">
+                                        New
+                                    </div>
+                                    <div className="item-labels-featured">
+                                        Featured
+                                    </div>
+                                    <div className="item-labels-proposals">
+                                        18 proposals
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="item-labels item-labels-tags-all ellipsis">
+                                <div className="item-labels-prefix">
+                                    Tags & Skills:
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                            </div>
+                        </Link>
                     </div>
+
+                ))}
+                    
                 
                     <div class="col-lg-6">
                         'no project'
@@ -1972,9 +1520,69 @@ const ProjectDetails = () => {
         <div class="section">
             <div class="project-list project-list-mini row">
                 
+           
                     <div class="col-lg-6">
-                         <ProjectList/>
-                    </div> 
+                        <Link to="/project/c1d00230-a423-4b84-a121-7105239ff8d8" className="project" id="projectlist">
+                                <div>
+                                    <div>
+                                        <span className="fa fa-angle-right icon-50"></span>
+                                    </div>
+                                    <div className="">
+                                        <div className="font-bold">
+                                           ggffh
+                                        </div>
+
+                                        <div className="text-fade ellipsis-2-lines mt-5">
+                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                        </div>
+                                    </div>
+                                </div>
+                            <div className="mt-5 ellipsis">
+                                <div className="project-price">
+                                    $150
+                                </div>
+                                <div className="item-labels">
+                                    <div className="item-labels-new">
+                                        New
+                                    </div>
+                                    <div className="item-labels-featured">
+                                        Featured
+                                    </div>
+                                    <div className="item-labels-proposals">
+                                        18 proposals
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="item-labels item-labels-tags-all ellipsis">
+                                <div className="item-labels-prefix">
+                                    Tags & Skills:
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                                <div className="item-labels-tags">
+                                    Tag name
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+
                
                     <div class="col-lg-6">
                         no project
