@@ -1,9 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AccountSidebar from '../components/AccountSidebar';
 import NavTabProjectMgt from '../components/NavTabProjectMgt';
 
 
 const ProjectPublish = () =>{
+    const [error, setError] = useState("");
+    const [display, setDisplay] = useState("");
+    var myHeaders = new Headers();
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Authorization", "Bearer 37|6I38pJScQro7GN881QKKiwQhzWEvsYh8aZIZbAWb");
+
+const handleSubmit =(e)=>{
+        e.preventDefault() 
+
+var formdata = new FormData();
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://jbuit.com/api/contact/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
 	return(
 		<>
 	<div class="container">
@@ -121,7 +144,7 @@ const ProjectPublish = () =>{
                                                     <span class="fa fa-angle-left"></span>
                                                     Back
                                                 </a>
-                                                <button type="submit" class="btn btn-blue btn-sm icon-right">
+                                                <button type="submit" class="btn btn-blue btn-sm icon-right" onClick= {handleSubmit}>
                                                     Publish
                                                     <span class="fa fa-check-circle"></span>
                                                 </button>
@@ -130,6 +153,7 @@ const ProjectPublish = () =>{
 
                                     </div>
                                 </form>
+                                <p Style={{display:display}}>category created successfully</p>
                                 
                             </div>
                         </div>
