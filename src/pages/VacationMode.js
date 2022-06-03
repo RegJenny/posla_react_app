@@ -1,7 +1,29 @@
-import React from 'react';
+import React,{useState} from 'react';
 import AccountSidebar from '../components/AccountSidebar';
 
 const VacationMode = () =>{
+
+	const[error, setError] = useState("");
+	const [display, setDisplay] = useState("");
+
+	const handleSubmit =(e)=>{
+        e.preventDefault()
+            
+	var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Authorization", "Bearer 37|6I38pJScQro7GN881QKKiwQhzWEvsYh8aZIZbAWb");
+
+  var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+   fetch("https://jbuit.com/api/contact/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
 	return(
 		<>
 			<div class="container">
@@ -78,7 +100,7 @@ const VacationMode = () =>{
 		                            <div class="pt-20 mt-20 bt-1-ddd">
 
 		                                <div class="floated-content">
-		                                    <button type="submit" class="btn btn-danger btn-sm pull-right ml-10">
+		                                    <button type="submit" class="btn btn-danger btn-sm pull-right ml-10" onClick={handleSubmit} >
 		                                        Turn on Vacation Mode
 		                                    </button>
 		                                    <a href="/account/settings" class="btn btn-transparent-black btn-sm pull-right">
@@ -88,6 +110,7 @@ const VacationMode = () =>{
 
 		                            </div>
 		                        </form>
+		                        <p Style={{display:display}}>category created successfully</p>
 
 		                    </div>
 		                </div>
